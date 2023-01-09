@@ -72,7 +72,8 @@ final class ScreenshotList extends AbstractParentElement implements Drawable, Se
             int xOff = 0;
 
             ScreenshotWidget.Context context = ScreenshotWidget.Context.create(() -> screenshotsPerRow, screenshotWidgets::indexOf);
-            for (File file : files) {
+            for (int i = 0; i < files.length; i++) {
+                File file = files[invertedOrder ? files.length - i - 1 : i];
                 if (file.isFile() && file.getName().endsWith(".png")) {
                     ScreenshotWidget widget = new ScreenshotWidget(mainScreen, childX, childY, childWidth, childHeight, context, file);
                     this.screenshotWidgets.add(widget);
