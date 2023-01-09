@@ -50,7 +50,7 @@ final class ScreenshotWidget extends ClickableWidget implements AutoCloseable, S
         this.baseY = y;
         this.ctx = ctx;
         this.screenshotFile = screenshotFile;
-        this.image = getImage(screenshotFile);
+        this.image = null;
     }
 
     void updateBaseY(int baseY) {

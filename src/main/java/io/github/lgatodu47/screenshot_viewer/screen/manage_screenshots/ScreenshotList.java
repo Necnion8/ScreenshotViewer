@@ -186,6 +186,7 @@ final class ScreenshotList extends AbstractParentElement implements Drawable, Se
             screenshotWidget.updateHoverState(mouseX, mouseY, viewportY, viewportBottom, updateHoverState);
             // skips rendering the widget if it is not at all in the render area
             if (screenshotWidget.y + screenshotWidget.getHeight() < y || screenshotWidget.y > y + height) {
+                screenshotWidget.close();  // cleanup video ram
                 continue;
             }
             screenshotWidget.render(matrices, mouseX, mouseY, delta, viewportY, viewportBottom);
