@@ -40,6 +40,7 @@ final class ScreenshotList extends AbstractParentElement implements Drawable, Se
         this.height = height;
         this.scrollSpeedFactor = ManageScreenshotsScreen.CONFIG.getOrFallback(ScreenshotViewerOptions.SCREEN_SCROLL_SPEED, 10);
         this.screenshotsPerRow = ManageScreenshotsScreen.CONFIG.getOrFallback(ScreenshotViewerOptions.INITIAL_SCREENSHOT_AMOUNT_PER_ROW, 4);
+        this.invertedOrder = ManageScreenshotsScreen.CONFIG.getOrFallback(ScreenshotViewerOptions.LIST_INVERTED_ORDER, false);
         updateVariables();
     }
 
@@ -166,6 +167,8 @@ final class ScreenshotList extends AbstractParentElement implements Drawable, Se
 
     public void close() {
         screenshotWidgets.forEach(ScreenshotWidget::close);
+        ManageScreenshotsScreen.CONFIG.put(ScreenshotViewerOptions.LIST_INVERTED_ORDER, invertedOrder);
+        ManageScreenshotsScreen.CONFIG.writeToFile();
     }
 
     /// Common Methods ///
